@@ -1,21 +1,53 @@
 pipeline {
     agent any
-
-    tools {
+tools {
         nodejs 'NodeJS'
     }
 
     stages {
-        stage('Setup') {
+        stage('Checkout') {
+            agent {
+                label "Agent1_1"
+            }
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                git 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                sh 'npm install'
+                sh 'npm update'
+                sh 'xvfb-run --auto-servernum npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b --parallel'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
+
+        stage('Checkout 2') {
+            agent {
+                label "Agent1_2"
             }
+             steps {
+                git 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                sh 'npm install'
+                sh 'npm update'
+                sh 'xvfb-run --auto-servernum npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b --parallel'
+            }
+        }
+
+        // stage('Checkout 3') {
+        //     agent {
+        //         label "Agent1_3"
+        //     }
+        //      steps {
+        //         git 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+        //         sh 'npm install'
+        //         sh 'npm update'
+        //         sh 'xvfb-run --auto-servernum npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b'
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/cypress/screenshots/**/*', fingerprint: true
+        }
+        failure {
+            echo "⚠️ Falló el pipeline. Revisa los logs en Jenkins."
         }
     }
 }

@@ -5,8 +5,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('fist example', () => {
 
   before(() => {
-    cy.visit('https://demoqa.com/text-box')
-    cy.title().should('eq', 'DEMOQA')
+    cy.visit('https://diggipymes.co/#home-page')
+    cy.title().should('eq', 'diggi pymes')
   })
 
   it('Firs test', () => {

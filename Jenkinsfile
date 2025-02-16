@@ -5,7 +5,7 @@ pipeline {
 
     stages {
         parallel {
-            stage('Checkout') {
+            stage('Slave 1') {
             agent {
                 label "Agent1_1"
             }
@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Checkout') {
+        stage('Slave 2') {
             agent {
                 label "Agent1_2"
             }

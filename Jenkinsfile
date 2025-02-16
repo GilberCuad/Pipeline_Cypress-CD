@@ -9,8 +9,9 @@ pipeline {
                 stage('Slave 1') {
                     agent { label "Agent1_1" }
                     steps {
+                        checkout scm
                     //  git branch: 'pipeline_cypress'
-                        git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                     //   git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
                        
                    
                         bat 'npm install'

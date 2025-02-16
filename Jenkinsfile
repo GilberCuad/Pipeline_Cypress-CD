@@ -44,11 +44,8 @@ pipeline {
     }
 
     post {
-        always {
-            archiveArtifacts artifacts: '**/cypress/screenshots/**/*', fingerprint: true
-        }
         failure {
-            echo "⚠️ Falló el pipeline. Revisa los logs en Jenkins."
+            echo "Falló el pipeline. Revisa los logs en Jenkins."
         }
     }
 }

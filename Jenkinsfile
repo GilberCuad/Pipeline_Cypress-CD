@@ -1,9 +1,11 @@
 pipeline {
     agent any
-
+    
+    tools {nodejs "node"}
 
     stages {
-        stage('Checkout') {
+        parallel {
+            stage('Checkout') {
             agent {
                 label "Agent1_1"
             }
@@ -27,6 +29,7 @@ pipeline {
             }
         }
 
+        }
         // stage('Checkout 3') {
         //     agent {
         //         label "Agent1_3"

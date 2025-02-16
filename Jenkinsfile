@@ -9,10 +9,10 @@ pipeline {
                 stage('Slave 1') {
                     agent { label "Agent1_1" }
                     steps {
-                        script {
+                    
                         url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
                         git branch: 'pipeline_cypress'
-                        }
+                   
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b --parallel' 

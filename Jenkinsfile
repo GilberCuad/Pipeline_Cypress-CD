@@ -10,6 +10,7 @@ pipeline {
                     agent { label "Agent1_1" }
                     steps {
                         git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                        branch: 'pipeline_cypress'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b --parallel' 
@@ -20,6 +21,7 @@ pipeline {
                     agent { label "Agent1_2" }
                     steps {
                         git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                        branch: 'pipeline_cypress'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npx cypress run --record --key 7015d80b-b679-40ac-899e-afbc94a0012b --parallel' 

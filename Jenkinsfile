@@ -9,7 +9,7 @@ pipeline {
                 stage('Slave 1') {
                     agent { label "Agent1_1" }
                     steps {
-                        git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                        url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
                         git branch: 'pipeline_cypress'
                         bat 'npm install'
                         bat 'npm update'
@@ -20,7 +20,7 @@ pipeline {
                 stage('Slave 2') {
                     agent { label "Agent1_2" }
                     steps {
-                       git url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
+                       url: 'https://github.com/GilberCuad/Pipeline_Cypress-CD.git'
                         git branch: 'pipeline_cypress'
                         bat 'npm install'
                         bat 'npm update'

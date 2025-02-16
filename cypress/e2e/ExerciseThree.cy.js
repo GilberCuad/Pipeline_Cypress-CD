@@ -2,7 +2,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 });
 
-describe('fist example', () => {
+describe('seconds example', () => {
 
   before(() => {
     cy.visit('https://demoqa.com/text-box')
